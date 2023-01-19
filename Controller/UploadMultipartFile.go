@@ -1,4 +1,4 @@
-package main
+package Controller
 
 import (
 	"github.com/gin-gonic/gin"
@@ -6,8 +6,7 @@ import (
 	"net/http"
 )
 
-func UploadMultipartFile() {
-	c := gin.Default()
+func UploadMultipartFile(c *gin.Engine) {
 	c.MaxMultipartMemory = 8 << 20 // 8MB 大小
 	c.POST("/upload", func(context *gin.Context) {
 		form, err := context.MultipartForm()

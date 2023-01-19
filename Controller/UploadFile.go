@@ -1,12 +1,11 @@
-package main
+package Controller
 
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
 
-func UploadFile() {
-	c := gin.Default()
+func UploadFile(c gin.RouterGroup) {
 	c.POST("/upload", func(context *gin.Context) {
 		file, err := context.FormFile("file")
 		if err != nil {
@@ -19,5 +18,4 @@ func UploadFile() {
 			"message": "upload Success",
 		})
 	})
-	c.Run(":8080")
 }

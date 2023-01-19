@@ -1,4 +1,4 @@
-package main
+package Controller
 
 import (
 	"github.com/gin-gonic/gin"
@@ -10,8 +10,7 @@ type User struct {
 	Password string `form:"password"`
 }
 
-func ShouldBind() {
-	c := gin.Default()
+func ShouldBind(c gin.RouterGroup) {
 	c.POST("/login", func(context *gin.Context) {
 		var user User
 		err := context.ShouldBind(&user)
@@ -24,5 +23,4 @@ func ShouldBind() {
 		}
 		context.JSON(http.StatusOK, gin.H{"status": "unauthorized"})
 	})
-	c.Run(":8080")
 }
